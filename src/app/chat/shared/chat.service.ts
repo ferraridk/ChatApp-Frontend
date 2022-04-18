@@ -24,6 +24,10 @@ export class ChatService {
       .fromEvent<string[]>('allMessages')
   }
 
+  sendNickName(nickname: string): void{
+    this.socket.emit('nickname', nickname);
+  }
+
   disconnect(): void{
     this.socket.disconnect();
   }

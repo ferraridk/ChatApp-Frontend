@@ -43,6 +43,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   sendNickName(): void {
-    this.nickname = this.nickNameForm.value;
+    if (this.nickNameForm.value){
+      this.nickname = this.nickNameForm.value;
+      this.chatService.sendNickName(this.nickNameForm.value);
+    }
   }
 }
