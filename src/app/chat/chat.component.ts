@@ -25,12 +25,14 @@ export class ChatComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(messages => {
         this.messages = messages});
+    this.chatService.connect();
   }
 
   ngOnDestroy(): void {
 
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+    this.chatService.disconnect();
   }
 
   sendMessage(): void {

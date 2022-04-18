@@ -23,4 +23,12 @@ export class ChatService {
     return this.socket
       .fromEvent<string[]>('allMessages')
   }
+
+  disconnect(): void{
+    this.socket.disconnect();
+  }
+
+  connect(): void{
+    this.socket.connect();
+  }
 }
