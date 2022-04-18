@@ -5,7 +5,7 @@
   <input type="text" [formControl]="message">
 </label>
 
-<button (click)="sendMessage()">
-  Send Message
-</button>
+<button (click)="sendMessage()">Send Message</button>
+
+<h4 *ngFor="let message of messages">{{message}}</h4>
 
