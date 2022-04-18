@@ -1,13 +1,24 @@
-<p>chat works!</p>
-
-<label>
+<div *ngIf="nickname">
+  <label>
   Message:
   <input type="text" [formControl]="message">
-</label>
+  </label>
 
-<button (click)="sendMessage()">Send Message</button>
+  <button (click)="sendMessage()">Send Message</button>
 
-<h4 *ngFor="let message of messages">{{message}}</h4>
+  <h4 *ngFor="let message of messages">
+    {{message}}
+  </h4>
+</div>
+<div *ngIf="!nickname">
+  <label>
+    Enter A Nickname:
+    <input type="text" [formControl]="nickNameForm">
+  </label>
 
-<h3>{{message.value}}</h3>
+  <button (click)="sendNickName()">Enter</button>
+
+</div>
+
+
 

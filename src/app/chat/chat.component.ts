@@ -12,8 +12,10 @@ import {take, takeUntil} from "rxjs/operators";
 })
 export class ChatComponent implements OnInit, OnDestroy {
   message = new FormControl('');
+  nickNameForm = new FormControl('');
   messages: String[] = [];
   unsubscribe$ = new Subject();
+  nickname: string | undefined;
   constructor(private chatService: ChatService ) { }
 
   ngOnInit(): void {
@@ -38,5 +40,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   sendMessage(): void {
     console.log(this.message.value);
     this.chatService.sendMessage(this.message.value);
+  }
+
+  sendNickName(): void {
+    this.nickname = this.nickNameForm.value;
   }
 }
