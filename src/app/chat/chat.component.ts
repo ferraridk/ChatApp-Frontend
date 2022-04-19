@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {ChatService} from "./shared/chat.service";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {take, takeUntil} from "rxjs/operators";
 
 
@@ -16,9 +16,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   messages: String[] = [];
   unsubscribe$ = new Subject();
   nickname: string | undefined;
+  clients$: Observable<string[]> | undefined;
   constructor(private chatService: ChatService ) { }
 
   ngOnInit(): void {
+    this.clients$ = this.chatService.listenForClients();
     this.chatService.listenForMessages()
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(message => {

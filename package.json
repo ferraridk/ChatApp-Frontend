@@ -18,6 +18,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "cors": "^2.8.5",
     "ngx-socket-io": "~4.2.0",
     "ngx-socketio2": "^1.0.0",
     "rxjs": "^6.6.6",

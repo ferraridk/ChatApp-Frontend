@@ -19,6 +19,11 @@ export class ChatService {
       .fromEvent<string>('newMessage')
   }
 
+  listenForClients(): Observable<string[]> {
+    return this.socket
+      .fromEvent<string[]>('clients')
+  }
+
   getAllMessages(): Observable<string[]> {
     return this.socket
       .fromEvent<string[]>('allMessages')
