@@ -6,8 +6,8 @@
 
   <button (click)="sendMessage()">Send Message</button>
 
-  <h4 *ngFor="let message of messages">
-    {{message}}
+  <h4 *ngFor="let chatMessage of messages">
+    {{chatMessage.message}}
   </h4>
 </div>
 <div *ngIf="!nickname">
@@ -23,7 +23,7 @@
 <div *ngIf="clients$ | async as clients">
   <ul>
     <li *ngFor="let client of clients">
-      {{client}}
+      {{client.nickname}}
     </li>
   </ul>
 </div>

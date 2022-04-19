@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import {Observable} from "rxjs";
+import {ChatClient} from "./chat-client.model";
+import {ChatMessage} from "./chat-message.model";
 
 
 
@@ -14,19 +16,19 @@ export class ChatService {
     this.socket.emit('message', msg);
   }
 
-  listenForMessages(): Observable<string> {
+  listenForMessages(): Observable<ChatMessage> {
     return this.socket
-      .fromEvent<string>('newMessage')
+      .fromEvent<ChatMessage>('newMessage')
   }
 
-  listenForClients(): Observable<string[]> {
+  listenForClients(): Observable<ChatClient[]> {
     return this.socket
-      .fromEvent<string[]>('clients')
+      .fromEvent<ChatClient[]>('clients')
   }
 
-  getAllMessages(): Observable<string[]> {
+  getAllMessages(): Observable<ChatMessage[]> {
     return this.socket
-      .fromEvent<string[]>('allMessages')
+      .fromEvent<ChatMessage[]>('allMessages')
   }
 
   sendNickName(nickname: string): void{
